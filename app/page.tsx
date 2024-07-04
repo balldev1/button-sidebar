@@ -1,27 +1,50 @@
-'use client';
+"use client"
 import React, { useState } from 'react';
 
-export default function Home() {
+export const SidebarPage = () => {
 
-  const [isDivVisible, setIsDivVisible] = useState(false);
+    const [isOpenSidebar, setIsSidebar] = useState(false);
 
-  const toggleDivVisibility = () => {
-    setIsDivVisible(!isDivVisible);
-  };
+    const toggleSidebar = () => {
+        setIsSidebar(!isOpenSidebar);
+    };
 
-  return (
-      <div className="h-screen w-full bg-rose-800 flex">
-          <button className="bg-rose-500 absolute" onClick={toggleDivVisibility}>
-              open
-          </button>
-          {isDivVisible &&
-          <div className="w-[20rem] bg-black">
-             1
-          </div>
-          }
-          <div>
-              2
-          </div>
-      </div>
-  );
-}
+    return (
+        <div className={`flex flex-col items-center p-5 gap-5  ${isOpenSidebar ? 'w-40' : 'w-30'}`}>
+            <div>
+                <button className="" onClick={toggleSidebar}>
+                    OPEN
+                </button>
+            </div>
+
+            {isOpenSidebar &&
+                <div className="flex-col flex gap-5 bg-black">
+                    <div>
+                        1
+                    </div>
+                    <div>
+                        1
+                    </div>
+                    <div>
+                        1
+                    </div>
+                </div>
+            }
+
+            {!isOpenSidebar &&
+                <div className="flex-col flex gap-5 bg-black">
+                    <div>
+                        2
+                    </div>
+                    <div>
+                        1
+                    </div>
+                    <div>
+                        1
+                    </div>
+                </div>
+            }
+
+        </div>
+    );
+};
